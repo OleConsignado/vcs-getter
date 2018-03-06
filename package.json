@@ -4,7 +4,7 @@
   "description": "VCS Getter provides a simple interface designed to get partial content from Version Control System repositories (currently supports Git and TFS).",
   "main": "index.js",
   "scripts": {
-    "test": "test.js"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",

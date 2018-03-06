@@ -1,9 +1,7 @@
-#!/usr/bin/env node 
-
 const { VCSGetter } = require('.');
 const util = require("util");
 
-vcs = new VCSGetter({
+const vcs = new VCSGetter({
 	git: { 
 		gitCommand: 'git', // optional (default git)
 		localPathBase: "/tmp/git-vcs-test",
@@ -50,4 +48,9 @@ async function test() {
 	}
 }
 
-test().catch(e => console.error(e));
+test().catch(e => {
+	console.error(e);
+	process.exit(1);
+});
+
+module.export = { test };
