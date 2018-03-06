@@ -1,0 +1,24 @@
+{
+  "name": "vcs-getter",
+  "version": "1.0.0",
+  "description": "VCS Getter provides a simple interface designed to get partial content from Version Control System repositories (currently supports Git and TFS).",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnconsulting/vcs-getter.git"
+  },
+  "keywords": [
+    "git",
+    "tfs",
+    "vcs"
+  ],
+  "author": "MN Consulting",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mnconsulting/vcs-getter/issues"
+  },
+  "homepage": "https://github.com/mnconsulting/vcs-getter#readme"
+}
