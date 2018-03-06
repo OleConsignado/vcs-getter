@@ -1,6 +1,6 @@
 {
   "name": "vcs-getter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "VCS Getter provides a simple interface designed to get partial content from Version Control System repositories (currently supports Git and TFS).",
   "main": "index.js",
   "scripts": {

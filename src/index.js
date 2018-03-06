@@ -1,3 +1,3 @@
 module.exports = { 
-	VCSClientFactory: require('./VCSClientFactory.js')
+	VCSGetter: require('./VCSGetter.js')
 };

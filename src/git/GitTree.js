@@ -20,6 +20,11 @@ class GitTree {
 	get _localPath() {
 
 		if(!this.__localPath) {
+
+			if(!fs.existsSync(this._gitTreeConf.localPathBase)) {
+				fs.mkdirSync(this._gitTreeConf.localPathBase, 0o700);
+			}
+
 			let localFolderName = Utility
 				.md5(`${this._gitTreeSource.repository}0${this._gitTreeSource.branch}1${this._gitTreeSource.path}`);
 			this.__localPath = path.join(this._gitTreeConf.localPathBase, 

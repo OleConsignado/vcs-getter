@@ -1,14 +1,13 @@
 const VCSSource = require('./VCSSource.js');
-const VCSClientConf = require('./VCSClientConf.js');
-const VCSClient = require('./VCSClient.js');
+const VCSGetterConf = require('./VCSGetterConf.js');
 const util = require('util');
 const { GitTree } = require('./git');
 const { TFSClient, TFSFolder } = require('./tfs');
 
-class VCSClientFactory {
+class VCSGetter {
 
 	constructor(conf) {
-		this.conf = new VCSClientConf(conf);
+		this.conf = new VCSGetterConf(conf);
 	}
 
 	_findTfsCollection(collectionUrl) {
@@ -21,7 +20,7 @@ class VCSClientFactory {
 		throw new Error(`Could not find configuration for collection '${collectionUrl}'`);
 	}
 
-	create(source) {
+	async get(source) {
 		let vcsSource;
 
 		if(typeof source == 'string') {
@@ -37,7 +36,7 @@ class VCSClientFactory {
 					gitTreeConf: this.conf.git
 				});
 
-				return new VCSClient(gitTree);
+				return await gitTree.get();
 			case 'tfs':
 				const tfsClient = new TFSClient({
 					tfsConf: this.conf.tfs,
@@ -45,7 +44,7 @@ class VCSClientFactory {
 				});
 				const tfsFolder = new TFSFolder(tfsClient, vcsSource.source.path);
 
-				return new VCSClient(tfsFolder);
+				return tfsFolder.get();
 				break;
 			default:
 				throw new Error(`Unexpected vcsSource.type: ${vcsSource.type}`);
@@ -53,4 +52,4 @@ class VCSClientFactory {
 	}
 }
 
-module.exports = VCSClientFactory;
+module.exports = VCSGetter;

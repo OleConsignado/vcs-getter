@@ -2,7 +2,7 @@ const { GitTreeConf } = require("./git");
 const { TFSConf, TFSCollection } = require("./tfs");
 
 
-class VCSClientConf {
+class VCSGetterConf {
 	constructor({ git, tfs }) {
 		this.git = new GitTreeConf(git);
 		this.tfs = new TFSConf(tfs);
@@ -13,4 +13,4 @@ class VCSClientConf {
 	}
 }
 
-module.exports = VCSClientConf;
+module.exports = VCSGetterConf;
