@@ -59,12 +59,20 @@ class GitTree {
 		return `${this._gitTreeSource.repository}${this._gitTreeSource.branch}${this._gitTreeSource.path}`;
 	}
 
+	async _getCurrentTreeHash() {
+		const { stdout } = await exec(`${this._gitTreeConf.gitCommand} ls-tree ${this._gitTreeSource.branch} -r "${this._gitTreeSource.path}"`, 
+			{ cwd: this._localPath });		
+
+		return Utility.md5(stdout);
+	}
+
 	async get() {
 		
 		let changedSinceLastGet = false;
 
 		const branchIDFilename = path.join(this._localPath, '.vcs-branch-name');
 		const treeIDFilename = path.join(this._localPath, '.vcs-tree-id');
+		const currentTreeHashFilename = path.join(this._localPath, '.vcs-current-tree-hash');
 
 		if(!fs.existsSync(this._localPath)) {
 
@@ -90,6 +98,7 @@ class GitTree {
 
 			if(!Utility.contains(`${stdout}${stderr}`, 'detached head')) {
 				fs.writeFileSync(branchIDFilename, this._gitTreeSource.branch);
+				fs.writeFileSync(currentTreeHashFilename, await this._getCurrentTreeHash());
 			} 
 
 			fs.writeFileSync(treeIDFilename, this._treeID);
@@ -103,8 +112,11 @@ class GitTree {
 				const branch = fs.readFileSync(branchIDFilename);
 				const { stdout, stderr } = await exec(`${this._gitTreeConf.gitCommand} pull origin ${branch}`, { cwd: this._localPath });		
 
-				if(!Utility.contains(`${stdout}${stderr}`, 'already up-to-date')) {
+				if(!Utility.contains(`${stdout}${stderr}`, 'already up-to-date')
+					|| await this._getCurrentTreeHash() != fs.readFileSync(currentTreeHashFilename)) 
+				{
 					changedSinceLastGet = true;
+					fs.writeFileSync(currentTreeHashFilename, await this._getCurrentTreeHash());
 					console.info(`Local content was changed.`);
 				} else {
 					console.info(`No changes since previous get.`);

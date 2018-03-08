@@ -1,5 +1,5 @@
 class TFSConf {
-	constructor({ tfCommand = 'tf' }) {
+	constructor({ tfCommand = 'tf' } = {}) {
 		this.tfCommand = tfCommand;
 	}
 }

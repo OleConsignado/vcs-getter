@@ -9,13 +9,13 @@ class GitCredentials {
 	// 	 }
 	// 
 	constructor(credentials) {
+		if(credentials) {
+			for(let key of Object.keys(credentials)) {
+				this[key] = credentials[key];
+			}
 
-		for(let key of Object.keys(credentials)) {
-			this[key] = credentials[key];
+			this._credentials = credentials;
 		}
-
-		this._credentials = credentials;
-
 	}
 
 	getCredentialFor(repository) {
