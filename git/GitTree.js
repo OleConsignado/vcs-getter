@@ -113,7 +113,7 @@ class GitTree {
 				const { stdout, stderr } = await exec(`${this._gitTreeConf.gitCommand} pull origin ${branch}`, { cwd: this._localPath });		
 
 				if(!Utility.contains(`${stdout}${stderr}`, 'already up-to-date')
-					|| await this._getCurrentTreeHash() != fs.readFileSync(currentTreeHashFilename)) 
+					&& await this._getCurrentTreeHash() != fs.readFileSync(currentTreeHashFilename)) 
 				{
 					changedSinceLastGet = true;
 					fs.writeFileSync(currentTreeHashFilename, await this._getCurrentTreeHash());

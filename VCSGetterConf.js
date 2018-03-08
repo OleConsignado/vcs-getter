@@ -7,7 +7,8 @@ class VCSGetterConf {
 		this.git = new GitTreeConf(git);
 		this.tfs = new TFSConf(tfs);
 		this.tfs.collections = [];
-		if(tfs.collections) {
+		
+		if(tfs && tfs.collections) {
 			for(let collection of tfs.collections) {
 				this.tfs.collections.push(new TFSCollection(collection));
 			}
