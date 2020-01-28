@@ -36,7 +36,7 @@ const vcs = new VCSGetter({
 });
 
 const urls = [
-	'https://github.com/mnconsulting/vcs-getter/tree/master/README.md'
+	'https://github.com/OleConsignado/vcs-getter/tree/master/README.md'
 ]
 
 async function test() {

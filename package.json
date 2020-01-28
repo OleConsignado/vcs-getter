@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mnconsulting/vcs-getter.git"
+    "url": "git+https://github.com/OleConsignado/vcs-getter.git"
   },
   "keywords": [
     "git",
     "tfs",
     "vcs"
   ],
-  "author": "MN Consulting",
-  "license": "MIT",
+  "author": "Matheus Neder",
+  "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/mnconsulting/vcs-getter/issues"
+    "url": "https://github.com/OleConsignado/vcs-getter/issues"
   },
-  "homepage": "https://github.com/mnconsulting/vcs-getter#readme"
+  "homepage": "https://github.com/OleConsignado/vcs-getter#readme"
 }

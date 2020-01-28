@@ -1,5 +1,5 @@
 # VCS Getter
-[![Build Status](https://travis-ci.org/mnconsulting/vcs-getter.svg?branch=master)](https://travis-ci.org/mnconsulting/vcs-getter)
+[![Build Status](https://travis-ci.org/OleConsignado/vcs-getter.svg?branch=master)](https://travis-ci.org/OleConsignado/vcs-getter)
 
 VCS Getter provides a simple interface designed to get partial content from Version Control System repositories (currently supports Git and TFS).
 
@@ -59,7 +59,7 @@ const vcs = new VCSGetter({
 });
 
 // Use it
-vcs.get("https://github.com/mnconsulting/vcs-getter/tree/master/README.md")
+vcs.get("https://github.com/OleConsignado/vcs-getter/tree/master/README.md")
     .then(r => "Contents downloaded to: " + console.log(r.localPath))
     .catch(e => console.error(e));
 ```
