@@ -4,8 +4,7 @@ node_js:
 deploy:
   provider: npm
   email: matheusneder@gmail.com
-  api_key:
-    secure: N+91gJOjjcHm6bo/BTnpWM97YsRf9LUq6gCqm967/ni1aW/praH11f/Qt2L7tSTTRFuBbH/hls9RNGt8Yr/064X3DLZ41rSZMrntks07dLqzIbyA5fD2tj4obOfeE1FnTfFLwRi0G/iqub4rhwEdnfTTUVo7tP7Y9/lBkWmpBaLgwZMDfhBwykD342IAoYyNbeeHJTiVhHmI1Qw2QnRh0pVx+fPH1pGyNmCqc9zacRaz4TaYWL3E4wEEtWJ3Upw3xh2YxmB07YGe/Aiuusc6aShN6SMn6MGAnl7UDYQtAkjVwOTSGEOBLhCT0nmh40V7M1tohSXO91l0/BhYQ/tLGFVdZ7FlrPrmSBa+4b2vrSCtGlYykDjCOuOITod/JZsFA7Rsk5KQwF9YLPYNXWxxJ9S57qf3Keeao2y2/ZDZg4rghuhWSLV2HXbf37W520+oGIPRpT7rcEWkrVruLDMxED1puNC0Yveit7yrezdmcaLjbuvAlFtO4lVMSwhHmoWyMoxdA8NcBnRq6i3ivC9nacigWVlnFNU9flfIRjr4UNoPnE6fZoOJvBM19NV1CESRSG1Swy7XZ6HDPnJSBwYtY3WZMmPEgyf62Q5QpwteIoO2SL3MLYpxVqE1nqDLCc1zW+YS65TqIKtIVbchNzt5CmjjOgEYmi4Bu/NO0l5XcUk=
+  api_key: $NPM_AUTH_TOKEN
   on:
     tags: true
     repo: OleConsignado/vcs-getter
